@@ -1,0 +1,13 @@
+
+Home
+
+Peças (Lista de Peças em estoque, cadastrar/modificar estoque)
+Nova Compra
+
+Clientes (Lista de clientes, cadastrar/modificar cliente)
+Novo Cliente
+
+Financeiro (Relação de Vendas, fluxo caixa(compras e vendas por periodo), cadastrar/modificar vendas)
+Nova Venda
+
+// Sobre
