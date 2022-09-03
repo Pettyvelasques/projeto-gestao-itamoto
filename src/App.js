@@ -9,9 +9,9 @@ import Vendas from './components/pages/Vendas'
 import NovaVenda from './components/pages/NovaVenda'
 import Financeiro from './components/pages/Financeiro'
 
-import Container from './components/layout/Container';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
+import Navbar from './components/layout/Navbar/index';
+import Container from './components/layout/Container/index';
+import Footer from './components/layout/Footer/index';
 
 function App() {
   return (

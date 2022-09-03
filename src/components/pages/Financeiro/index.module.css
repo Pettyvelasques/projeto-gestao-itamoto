@@ -1,0 +1,30 @@
+.search_container {
+    width: 100%;
+  }
+  
+  .search_container input {
+    margin: 2em 0;
+  }
+  
+  .index_result{
+    display: flex;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1em;
+  }
+  
+  .search_result{
+    display: flex;
+    text-align: center;
+    height: 2em;
+  }
+  
+  .search_result p {
+    font-size: 0.9em;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search_result:hover{
+    background-color: #c9c9c9;
+  }

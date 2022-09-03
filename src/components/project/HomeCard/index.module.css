@@ -1,0 +1,26 @@
+.home_card{
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 0;
+    border: .12em solid black;
+    border-radius: 10px;
+    width: 15%;
+    margin: 3em;
+}
+
+.home_card:hover{
+    border-color: #e61818;
+}
+
+.home_card img {
+    font-size: 0.6em;
+}
+
+.home_card h4 {
+    color: #222;
+    margin-top: 1em;
+    font-size: 1em;
+}
