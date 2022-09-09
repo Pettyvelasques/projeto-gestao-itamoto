@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Home from './components/pages/Home';
-import Pecas from './components/pages/Pecas'
-import NovaCompra from './components/pages/NovaCompra'
-import Clientes from './components/pages/Clientes'
-import NovoCliente from './components/pages/NovoCliente'
-import Vendas from './components/pages/Vendas'
-import NovaVenda from './components/pages/NovaVenda'
-import Financeiro from './components/pages/Financeiro'
+import Pieces from './components/pages/Pieces'
+import NewBuy from './components/pages/NewBuy'
+import Clients from './components/pages/Clients'
+import NewClient from './components/pages/NewClient'
+import Sales from './components/pages/Sales'
+import NewSale from './components/pages/NewSale'
+import Finance from './components/pages/Finance'
 
 import Navbar from './components/layout/Navbar/index';
 import Container from './components/layout/Container/index';
@@ -20,13 +20,13 @@ function App() {
       <Container customClass="min-height">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/pecas" element={<Pecas />} />
-          <Route path="/novacompra" element={<NovaCompra />} />
-          <Route path="/clientes" element={<Clientes />} />
-          <Route path="/novocliente" element={<NovoCliente />} />
-          <Route path="/vendas" element={<Vendas />} />
-          <Route path="/novavenda" element={<NovaVenda />} />
-          <Route path="/financeiro" element={<Financeiro />} />
+          <Route path="/pieces" element={<Pieces />} />
+          <Route path="/newbuy" element={<NewBuy />} />
+          <Route path="/clients" element={<Clients />} />
+          <Route path="/newclient" element={<NewClient />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/newsale" element={<NewSale />} />
+          <Route path="/finance" element={<Finance />} />
         </Routes>
       </Container>
       <Footer />

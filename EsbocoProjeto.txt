@@ -11,3 +11,19 @@ Financeiro (Relação de Vendas, fluxo caixa(compras e vendas por periodo), cada
 Nova Venda
 
 // Sobre
+
+
+--------------
+
+id
+nome
+fabricante
+marca (id, nome)
+modelo moto
+ano inicial
+ano final
+quantodade
+custo
+preco
+categoria(id, nome)
+key

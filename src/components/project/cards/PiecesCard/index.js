@@ -1,11 +1,12 @@
-
+import { Link } from 'react-router-dom'
 import styles from './index.module.css'
 
-function PiecesCard({ id, nome, fabricante, marca, modelo, de, ate, quantidade, preco, key }) {
+import { BsPencil, BsFillTrashFill } from 'react-icons/bs'
+
+function PiecesCard({ id, nome, fabricante, marca, modelo, de, ate, quantidade, preco }) {
 
     return (
         <div className={styles.search_card}>
-            <p>{id}</p>
             <p>{nome}</p>
             <p>{fabricante}</p>
             <p>{marca}</p>
@@ -14,6 +15,11 @@ function PiecesCard({ id, nome, fabricante, marca, modelo, de, ate, quantidade, 
             <p>{ate}</p>
             <p>{quantidade}</p>
             <p>{preco}</p>
+            <p>
+                <Link to={`./pecas/${id}`}>
+                    <BsPencil />
+                </Link>
+            </p>
         </div>
     )
 }

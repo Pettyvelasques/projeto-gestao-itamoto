@@ -1,0 +1,29 @@
+.search_card{
+    display: flex;/* 
+    align-items: center;    
+    justify-content: space-between; */
+    border-bottom: .12em solid black;/* 
+    width: 100%; */
+}
+
+.search_card:hover{
+    background-color: #c9c9c9;
+}
+
+.search_card img {
+    font-size: 0.6em;
+}
+
+.search_card p {
+    color: #222;/* 
+    font-size: 1em; */
+    width: 100%;/* 
+    height: auto; */
+}
+
+.search_card a {/* 
+    text-decoration: none;
+    border: none;
+    font-size: 1em; */
+    color: #e61818;
+}

@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import ClientsCard from "../../project/ClientsCard";
+import ClientsCard from "../../project/cards/ClientsCard";
 import Container from "../../layout/Container";
-import Loading from "../../layout/Loading"
+import LinkButton from "../../layout/LinkButton";
 
 import styles from './index.module.css'
 
 function Clientes() {
   const [clients, setClients] = useState({})
-  const [removeLoading, setRemoveLoading] = useState()
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
@@ -24,7 +23,6 @@ function Clientes() {
           .then(data => {
             setClients(data)
             setFilteredData(data)
-            setRemoveLoading(true)
           })
           .catch((err) => console.log(err))
       }, 300)
@@ -46,24 +44,23 @@ function Clientes() {
 
   return (
     <Container customClass="start">
-      <div className="search_container">
+      <div className={styles.search_container}>
         <input type="search"
           placeholder="Digite para pesquisar"
           onChange={handleOnChange}
           value={wordEntered}
         />
+        <LinkButton to="/newclient" text="+" />
       </div>
       <div className={styles.index_result}>
-        <ClientsCard
-          id="Id"
-          nome="Nome"
-          sobrenome="Sobrenome"
-          telefone="Telefone"
-          marca="Marca"
-          modelo="Modelo"
-          cilindrada="Cilindrada"
-          ano="Ano"
-        />
+        <p> Nome </p>
+        <p> Sobrenome </p>
+        <p> Telefone </p>
+        <p> Marca </p>
+        <p> Modelo </p>
+        <p> Cilindrada </p>
+        <p> Ano </p>
+        <p> Editar </p>
       </div>
       {filteredData.length !== 0 && (
         <div className={styles.search_result}>
@@ -78,15 +75,15 @@ function Clientes() {
                 modelo={value.modelo}
                 cilindrada={value.cilindrada}
                 ano={value.ano}
+                key={value.id}
               />
             );
           })}
         </div>
       )
       }
-      {!removeLoading && <Loading />}
-      {removeLoading && clients.length === 0 && (
-          <p>Não há clientes cadastrados!</p>
+      {clients.length === 0 && (
+        <p>Não há clientes cadastrados!</p>
       )}
     </Container>
   )

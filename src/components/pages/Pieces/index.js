@@ -1,15 +1,25 @@
+import { useLocation } from "react-router-dom"
+
 import { useState, useEffect } from "react";
-import PiecesCard from "../../project/PiecesCard";
-import Container from "../../layout/Container";
-import Loading from "../../layout/Loading"
 
 import styles from './index.module.css'
+import Message from "../../layout/Message";
+import PiecesCard from "../../project/cards/PiecesCard";
+import Container from "../../layout/Container";
+import LinkButton from "../../layout/LinkButton";
 
-function Pecas() {
+function Pieces() {
   const [pieces, setPieces] = useState({})
-  const [removeLoading, setRemoveLoading] = useState()
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
+
+  const location = useLocation()
+  let message = ''
+  let type = ''
+  if (location.state) {
+    message = location.state.message
+    type = location.state.type
+  }
 
   useEffect(() => {
     setTimeout(
@@ -22,9 +32,8 @@ function Pecas() {
         })
           .then(resp => resp.json())
           .then(data => {
-            setPieces(data)
+            setPieces(data.sort())
             setFilteredData(data)
-            setRemoveLoading(true)
           })
           .catch((err) => console.log(err))
       }, 300)
@@ -44,31 +53,39 @@ function Pecas() {
     }
   }
 
+  const setOrderModel = (x , y) => {
+    let a = x.modelo.toUpperCase(),
+    b = y.modelo.toUpperCase();
+
+    return a == b ? 0 : a > b ? 1 : -1 ;
+  }
+
   return (
     <Container customClass="start">
-      <div className="search_container">
-        <input type="search"
+      <div className={styles.search_container}>
+        <input type="text"
           placeholder="Digite para pesquisar"
           onChange={handleOnChange}
           value={wordEntered}
         />
+        <LinkButton to="/newbuy" text="+" />
       </div>
+      {message && <Message type={type} msg={message} />}
+
       <div className={styles.index_result}>
-        <PiecesCard
-          id="Id"
-          nome="Nome"
-          fabricante="Fabricante"
-          marca="Marca"
-          modelo="Modelo"
-          de="Ano Inicial"
-          ate="Ano Final"
-          quantidade="Quantidade"
-          preco="Preço"
-        />
+        <p> Nome </p>
+        <p> Fabricante </p>
+        <p> Marca </p>
+        <p> Modelo </p>
+        <p> Ano Inicial </p>
+        <p> Ano Final </p>
+        <p> Quantidade </p>
+        <p> Preço </p>
+        <p> Editar </p>
       </div>
       {filteredData.length !== 0 && (
         <div className={styles.search_result}>
-          {filteredData.slice().map((value) => {
+          {filteredData.slice().sort(setOrderModel).map((value) => {
             return (
               <PiecesCard
                 id={value.id}
@@ -80,18 +97,18 @@ function Pecas() {
                 ate={value.anoFinal}
                 quantidade={value.quantidade}
                 preco={value.preco}
+                key={value.id}
               />
             );
           })}
         </div>
       )
       }
-      {!removeLoading && <Loading />}
-      {removeLoading && pieces.length === 0 && (
+      {pieces.length === 0 && (
         <p>Não há peças cadastradas!</p>
       )}
     </Container>
   )
 }
 
-export default Pecas;
+export default Pieces;

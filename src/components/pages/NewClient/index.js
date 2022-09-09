@@ -1,6 +1,6 @@
 import styles from './index.module.css'
 
-function NovoCliente() {
+function NewClient() {
     return (
         <div className={styles.novo_cliente_container}>
             <h1>
@@ -13,4 +13,4 @@ function NovoCliente() {
     )
 }
 
-export default NovoCliente
+export default NewClient

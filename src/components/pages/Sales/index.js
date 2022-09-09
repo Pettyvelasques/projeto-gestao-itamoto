@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import SalesCard from "../../project/SalesCard";
+import SalesCard from "../../project/cards/SalesCard";
 import Container from "../../layout/Container";
-import Loading from "../../layout/Loading"
+import LinkButton from "../../layout/LinkButton";
 
 import styles from './index.module.css'
 
-function Vendas() {
+function Sales() {
   const [sales, setSales] = useState({})
-  const [removeLoading, setRemoveLoading] = useState()
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
@@ -24,7 +23,6 @@ function Vendas() {
           .then(data => {
             setSales(data)
             setFilteredData(data)
-            setRemoveLoading(true)
           })
           .catch((err) => console.log(err))
       }, 300)
@@ -34,7 +32,7 @@ function Vendas() {
     const searchWord = e.target.value
     setWordEntered(searchWord)
     const newFilter = sales.filter((value) => {
-      return value.nome.toLowerCase().includes(searchWord.toLowerCase())
+      return value.comprador.nome.toLowerCase().includes(searchWord.toLowerCase())
     })
 
     if (searchWord === "") {
@@ -46,24 +44,23 @@ function Vendas() {
 
   return (
     <Container customClass="start">
-      <div className="search_container">
+      <div className={styles.search_container}>
         <input type="search"
           placeholder="Digite para pesquisar"
           onChange={handleOnChange}
           value={wordEntered}
         />
+        <LinkButton to="/newsale" text="+" />
       </div>
       <div className={styles.index_result}>
-        <SalesCard
-          id="Id"
-          data="Data"
-          nome="Nome"
-          sobrenome="Sobrenome"
-          telefone="Telefone"
-          quantidade="Total de Itens"
-          total="Valor Total"
-          pagamento="Forma de Pagamento"
-        />
+        <p> Data </p>
+        <p> Nome </p>
+        <p> Sobrenome </p>
+        <p> Telefone </p>
+        <p> Total de Itens </p>
+        <p> Valor Total </p>
+        <p> Forma de Pagamento </p>
+        <p> Editar </p>
       </div>
       {filteredData.length !== 0 && (
         <div className={styles.search_result}>
@@ -78,18 +75,18 @@ function Vendas() {
                 quantidade={value.itens.quantidade}
                 total={value.total}
                 pagamento={value.formaPagamento}
+                key={value.id}
               />
             );
           })}
         </div>
       )
       }
-      {!removeLoading && <Loading />}
-      {removeLoading && sales.length === 0 && (
+      {sales.length === 0 && (
         <p>Não há vendas cadastradas!</p>
       )}
     </Container>
   )
 }
 
-export default Vendas;
+export default Sales;

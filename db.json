@@ -1,161 +1,267 @@
 {
-    "pecas": [
-        {
-            "id": 1,
-            "nome": "Amortecedor",
-            "fabricante": "Scud",
-            "marca": {
-                "id": 1,
-                "nome": "Honda"
-            },
-            "modelo": "CG",
-            "anoInicial": 2000,
-            "anoFinal": 2009,
-            "quantidade": 1,
-            "custo": 50,
-            "preco": 100,
-            "categoria": {
-                "id": 2,
-                "nome": "Suspensão"
-            }
-        },
-        {
-            "id": 1,
-            "nome": "Bengala",
-            "fabricante": "Scud",
-            "marca": {
-                "id": 1,
-                "nome": "Honda"
-            },
-            "modelo": "CG",
-            "anoInicial": 2000,
-            "anoFinal": 2009,
-            "quantidade": 10,
-            "custo": 100,
-            "preco": 200,
-            "categoria": {
-                "id": 2,
-                "nome": "Suspensão"
-            }
-        }
-    ],
-    "categorias": [
-        {
-            "id": 1,
-            "nome": "Direção"
-        },
-        {
-            "id": 2,
-            "nome": "Suspensão"
-        },
-        {
-            "id": 3,
-            "nome": "Transmissão"
-        },
-        {
-            "id": 4,
-            "nome": "Alimentação"
-        },
-        {
-            "id": 5,
-            "nome": "Iluminação"
-        },
-        {
-            "id": 6,
-            "nome": "Freios"
-        },
-        {
-            "id": 7,
-            "nome": "Cabos"
-        },
-        {
-            "id": 8,
-            "nome": "Motor"
-        },
-        {
-            "id": 9,
-            "nome": "Sensores"
-        }
-    ],
-    "marcas": [
-        {
-            "id": 1,
-            "nome": "Honda"
-        },
-        {
-            "id": 2,
-            "nome": "Yamaha"
-        },
-        {
-            "id": 3,
-            "nome": "Suzuki"
-        },
-        {
-            "id": 4,
-            "nome": "Kasinski"
-        },
-        {
-            "id": 5,
-            "nome": "Dafra"
-        },
-        {
-            "id": 6,
-            "nome": "Sundown"
-        },
-        {
-            "id": 7,
-            "nome": "Haojue"
-        }
-    ],
-    "compras": [],
-    "clientes": [
-        {
-            "id": 1,
-            "nome": "Patrick",
-            "sobrenome": "Velasques Pessanha",
-            "endereco": "Av. São João Batista",
-            "numero": 384,
-            "complemento": "A8-24",
-            "bairro": "Rudge Ramos",
-            "cidade": "São Bernardo do Campo",
-            "telefone": "(11) 97309-5495",
-            "marca": {
-                "id": 4,
-                "nome": "Kasinski"
-            },
-            "modelo": "Mirage",
-            "cilindrada": 150,
-            "ano": 2011
-        }
-    ],
-    "vendas": [
-        {
-            "id": 1,
-            "data": "03/09/2022",
-            "comprador": {
-                "nome": "Patrick",
-                "sobrenome": "Velasques Pessanha"
-            },
-            "dados": {
-                "endereco": "Av. São João Batista",
-                "numero": 384,
-                "complemento": "A8-24",
-                "bairro": "Rudge Ramos",
-                "cidade": "São Bernardo do Campo",
-                "telefone": "(11) 97309-5495"
-            },
-            "itens": {
-                "nome": "Amortecedor",
-                "fabricante": "Scud",
-                "marca": "Honda",
-                "modelo": "CG",
-                "anoInicial": 2000,
-                "anoFinal": 2009,
-                "quantidade": 2,
-                "preco": 200
-            },
-            "total": 400,
-            "formaPagamento": "Crédito"
-        }
-    ]
+  "pecas": [
+    {
+      "id": 3,
+      "nome": "Bengala",
+      "fabricante": "Pro Tork",
+      "marca": {
+        "id": "10",
+        "nome": "Honda"
+      },
+      "modelo": "CG",
+      "anoInicial": 2000,
+      "anoFinal": 2009,
+      "quantidade": 10,
+      "custo": 100,
+      "preco": 200,
+      "key": "xyz2"
+    },
+    {
+      "id": 1,
+      "nome": "Amortecedor",
+      "fabricante": "Scud",
+      "marca": {
+        "id": "10",
+        "nome": "Honda"
+      },
+      "modelo": "CG",
+      "anoInicial": 2000,
+      "anoFinal": 2009,
+      "quantidade": 1,
+      "custo": 50,
+      "preco": 100,
+      "key": "xyz"
+    },
+    {
+      "id": 2,
+      "nome": "Bengala",
+      "fabricante": "Scud",
+      "marca": {
+        "id": "10",
+        "nome": "Honda"
+      },
+      "modelo": "Alba",
+      "anoInicial": 2000,
+      "anoFinal": 2009,
+      "quantidade": 10,
+      "custo": 100,
+      "preco": 200,
+      "key": "xyz1"
+    },
+    {
+      "marca": {
+        "id": "18",
+        "nome": "MXF"
+      },
+      "nome": "teste",
+      "fabricante": "teste",
+      "modelo": "teste",
+      "ano_inicial": "1",
+      "ano_final": "1",
+      "custo": "1",
+      "quantidade": "1",
+      "anoInicial": "3",
+      "anoFinal": "2",
+      "preco": "1",
+      "id": 4
+    },
+    {
+      "nome": "tste",
+      "fabricante": "test",
+      "marca": {
+        "id": "18",
+        "nome": "MXF"
+      },
+      "modelo": "1",
+      "anoInicial": "1",
+      "anoFinal": "",
+      "quantidade": "1",
+      "custo": "1",
+      "preco": "1",
+      "id": 5
+    }
+  ],
+  "marcas": [
+    {
+      "id": 1,
+      "nome": "Avelloz"
+    },
+    {
+      "id": 2,
+      "nome": "BMW"
+    },
+    {
+      "id": 3,
+      "nome": "BRP"
+    },
+    {
+      "id": 4,
+      "nome": "Bull"
+    },
+    {
+      "id": 5,
+      "nome": "CFMoto"
+    },
+    {
+      "id": 6,
+      "nome": "Dafra"
+    },
+    {
+      "id": 7,
+      "nome": "Ducati"
+    },
+    {
+      "id": 8,
+      "nome": "Haojue"
+    },
+    {
+      "id": 9,
+      "nome": "Harley-Davison"
+    },
+    {
+      "id": 10,
+      "nome": "Honda"
+    },
+    {
+      "id": 11,
+      "nome": "Kasinski"
+    },
+    {
+      "id": 12,
+      "nome": "Kawasaki"
+    },
+    {
+      "id": 13,
+      "nome": "KTM"
+    },
+    {
+      "id": 14,
+      "nome": "Kymco"
+    },
+    {
+      "id": 15,
+      "nome": "LL Motors"
+    },
+    {
+      "id": 16,
+      "nome": "Motocar"
+    },
+    {
+      "id": 17,
+      "nome": "Motorino"
+    },
+    {
+      "id": 18,
+      "nome": "MXF"
+    },
+    {
+      "id": 19,
+      "nome": "Piaggio"
+    },
+    {
+      "id": 20,
+      "nome": "Pro Tork"
+    },
+    {
+      "id": 21,
+      "nome": "Royal Enfield"
+    },
+    {
+      "id": 22,
+      "nome": "Shineray"
+    },
+    {
+      "id": 23,
+      "nome": "Sousa"
+    },
+    {
+      "id": 24,
+      "nome": "Sundown"
+    },
+    {
+      "id": 25,
+      "nome": "Suzuki"
+    },
+    {
+      "id": 26,
+      "nome": "Traxx"
+    },
+    {
+      "id": 27,
+      "nome": "Triumph"
+    },
+    {
+      "id": 28,
+      "nome": "TVS"
+    },
+    {
+      "id": 29,
+      "nome": "Vespa"
+    },
+    {
+      "id": 30,
+      "nome": "Vmoto"
+    },
+    {
+      "id": 31,
+      "nome": "Voltz"
+    },
+    {
+      "id": 32,
+      "nome": "Yamaha"
+    }
+  ],
+  "compras": [],
+  "clientes": [
+    {
+      "id": 1,
+      "nome": "Patrick",
+      "sobrenome": "Velasques Pessanha",
+      "endereco": "Av. São João Batista",
+      "numero": 384,
+      "complemento": "A8-24",
+      "bairro": "Rudge Ramos",
+      "cidade": "São Bernardo do Campo",
+      "telefone": "(11) 97309-5495",
+      "marca": {
+        "id": 11,
+        "nome": "Kasinski"
+      },
+      "modelo": "Mirage",
+      "cilindrada": 150,
+      "ano": 2011,
+      "key": "xyz2"
+    }
+  ],
+  "vendas": [
+    {
+      "id": 1,
+      "data": "03/09/2022",
+      "comprador": {
+        "nome": "Patrick",
+        "sobrenome": "Velasques Pessanha"
+      },
+      "dados": {
+        "endereco": "Av. São João Batista",
+        "numero": 384,
+        "complemento": "A8-24",
+        "bairro": "Rudge Ramos",
+        "cidade": "São Bernardo do Campo",
+        "telefone": "(11) 97309-5495"
+      },
+      "itens": {
+        "nome": "Amortecedor",
+        "fabricante": "Scud",
+        "marca": "Honda",
+        "modelo": "CG",
+        "anoInicial": 2000,
+        "anoFinal": 2009,
+        "quantidade": 2,
+        "preco": 200
+      },
+      "total": 400,
+      "formaPagamento": "Crédito",
+      "key": "xyz3"
+    }
+  ]
 }
