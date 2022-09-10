@@ -9,10 +9,11 @@
   padding-left: 0.5em;
   width: 80%;
   border: .1em solid black;
+  border-radius: 5px;
 }
 
-input:focus{/* 
-  outline: none; */
+input:focus{
+  outline: none;
 }
 
 .index_result {

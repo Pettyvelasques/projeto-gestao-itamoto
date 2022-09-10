@@ -1,0 +1,12 @@
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em 2em;
+    width: 100%;
+    margin: 2em 0;
+}
+
+.form_button {
+    display: flex;
+    justify-content: flex-end;
+}

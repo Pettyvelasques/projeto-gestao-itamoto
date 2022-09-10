@@ -6,7 +6,7 @@ import SubmitButton from '../../../form/Submit'
 
 import styles from "./index.module.css"
 
-function NewBuyForm({ handleSubmit, btnText, pecaData }) {
+function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
     const [dados, setDados] = useState([])
     const [peca, setPeca] = useState(pecaData || {})
 
@@ -50,6 +50,7 @@ function NewBuyForm({ handleSubmit, btnText, pecaData }) {
                     placeholder="Insira o nome da peça"
                     handleOnChange={handleChange}
                     value={peca.nome ? peca.nome : ''}
+                    disabled = {disabled}
                 />
             </div>
             <div>
@@ -60,6 +61,7 @@ function NewBuyForm({ handleSubmit, btnText, pecaData }) {
                     placeholder="Insira o nome do fabricante"
                     handleOnChange={handleChange}
                     value={peca.fabricante ? peca.fabricante : ''}
+                    disabled = {disabled}
                 />
             </div>
             <div>
@@ -69,6 +71,7 @@ function NewBuyForm({ handleSubmit, btnText, pecaData }) {
                     options={dados}
                     handleOnChange={handleBrand}
                     value={peca.marca ? peca.marca.id : ''}
+                    disabled = {disabled}
                 />
             </div>
             <div>
@@ -79,6 +82,7 @@ function NewBuyForm({ handleSubmit, btnText, pecaData }) {
                     placeholder="Insira o modelo da moto"
                     handleOnChange={handleChange}
                     value={peca.modelo ? peca.modelo : ''}
+                    disabled = {disabled}
                 />
             </div>
             <div>
@@ -89,6 +93,7 @@ function NewBuyForm({ handleSubmit, btnText, pecaData }) {
                     placeholder="Insira o ano inicial do modelo"
                     handleOnChange={handleChange}
                     value={peca.anoInicial ? peca.anoInicial : ''}
+                    disabled = {disabled}
                 />
             </div>
             <div>
@@ -99,16 +104,7 @@ function NewBuyForm({ handleSubmit, btnText, pecaData }) {
                     placeholder="Insira o ano final do modelo"
                     handleOnChange={handleChange}
                     value={peca.anoFinal ? peca.anoFinal : ''}
-                />
-            </div>
-            <div>
-                <Input
-                    name="quantidade"
-                    type="number"
-                    text="Quantidade de Peças"
-                    placeholder="Insira a quantidade de peças"
-                    handleOnChange={handleChange}
-                    value={peca.quantidade ? peca.quantidade : ''}
+                    disabled = {disabled}
                 />
             </div>
             <div>
@@ -132,12 +128,22 @@ function NewBuyForm({ handleSubmit, btnText, pecaData }) {
                 />
             </div>
             <div>
+                <Input
+                    name="quantidade"
+                    type="number"
+                    text="Quantidade de Peças"
+                    placeholder="Insira a quantidade de peças"
+                    handleOnChange={handleChange}
+                    value={peca.quantidade ? peca.quantidade : ''}
+                />
+            </div>
+            <div className={styles.form_button}>
                 <SubmitButton
                     text={btnText}
                 />
-            </div>
+            </div>  
         </form>
     )
 }
 
-export default NewBuyForm
+export default NewPieceForm

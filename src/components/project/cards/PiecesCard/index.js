@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './index.module.css'
 
-import { BsPencil, BsFillTrashFill } from 'react-icons/bs'
+import { BsSearch } from 'react-icons/bs'
 
 function PiecesCard({ id, nome, fabricante, marca, modelo, de, ate, quantidade, preco }) {
 
@@ -17,7 +17,7 @@ function PiecesCard({ id, nome, fabricante, marca, modelo, de, ate, quantidade, 
             <p>{preco}</p>
             <p>
                 <Link to={`./pecas/${id}`}>
-                    <BsPencil />
+                    <BsSearch />
                 </Link>
             </p>
         </div>

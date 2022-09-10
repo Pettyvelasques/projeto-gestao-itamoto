@@ -4,13 +4,8 @@
     margin-bottom: 1em;
 }
 
-.form_control label {
-    margin-bottom: .6em;
-    font-weight: bold;
-}
-
 .form_control select {
     padding: .7em;
-    border-radius: 0;
-    border: none;
+    border: .1em solid black;
+    border-radius: 5px;
 }

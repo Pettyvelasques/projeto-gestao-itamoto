@@ -1,14 +1,26 @@
+import { useLocation } from "react-router-dom"
+
 import { useState, useEffect } from "react";
-import ClientsCard from "../../project/cards/ClientsCard";
+
+import styles from './index.module.css'
+import Message from "../../layout/Message";
+import ClientsCard from "../../project/Cards/ClientsCard";
 import Container from "../../layout/Container";
 import LinkButton from "../../layout/LinkButton";
 
-import styles from './index.module.css'
 
 function Clientes() {
   const [clients, setClients] = useState({})
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
+
+  const location = useLocation()
+  let message = ''
+  let type = ''
+  if (location.state) {
+    message = location.state.message
+    type = location.state.type
+  }
 
   useEffect(() => {
     setTimeout(
@@ -42,6 +54,13 @@ function Clientes() {
     }
   }
 
+  const setOrderName = (x , y) => {
+    let a = x.nome.toUpperCase(),
+    b = y.nome.toUpperCase();
+
+    return a === b ? 0 : a > b ? 1 : -1 ;
+  }
+
   return (
     <Container customClass="start">
       <div className={styles.search_container}>
@@ -52,6 +71,8 @@ function Clientes() {
         />
         <LinkButton to="/newclient" text="+" />
       </div>
+      {message && <Message type={type} msg={message} />}
+
       <div className={styles.index_result}>
         <p> Nome </p>
         <p> Sobrenome </p>
@@ -60,11 +81,11 @@ function Clientes() {
         <p> Modelo </p>
         <p> Cilindrada </p>
         <p> Ano </p>
-        <p> Editar </p>
+        <p>  </p>
       </div>
       {filteredData.length !== 0 && (
         <div className={styles.search_result}>
-          {filteredData.slice().map((value) => {
+          {filteredData.slice().sort(setOrderName).map((value) => {
             return (
               <ClientsCard
                 id={value.id}

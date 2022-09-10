@@ -1,7 +1,7 @@
 import styles from './index.module.css'
 
 import Container from "../../layout/Container"
-import HomeCard from '../../project/cards/HomeCard'
+import HomeCard from '../../project/Cards/HomeCard'
 import Logo from '../../../img/itamoto_logo.png'
 import LogoPecas from '../../../img/pecas_icon.png'
 import LogoClientes from '../../../img/clientes_icon.png'

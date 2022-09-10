@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './index.module.css'
 
-import { BsPencil, BsFillTrashFill } from 'react-icons/bs'
+import { BsSearch } from 'react-icons/bs'
 
 function SalesCard({ id, data, nome, sobrenome, telefone, quantidade, preco, total, pagamento}) {
 
@@ -16,7 +16,7 @@ function SalesCard({ id, data, nome, sobrenome, telefone, quantidade, preco, tot
             <p>{pagamento}</p>
             <p>
                 <Link to={`./vendas/${id}`}>
-                    <BsPencil />
+                    <BsSearch />
                 </Link>
             </p>
         </div>

@@ -9,6 +9,7 @@
   padding-left: 0.5em;
   width: 80%;
   border: .1em solid black;
+  border-radius: 5px;
 }
 
 input:focus{

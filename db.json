@@ -1,84 +1,19 @@
 {
   "pecas": [
     {
-      "id": 3,
-      "nome": "Bengala",
-      "fabricante": "Pro Tork",
-      "marca": {
-        "id": "10",
-        "nome": "Honda"
-      },
-      "modelo": "CG",
-      "anoInicial": 2000,
-      "anoFinal": 2009,
-      "quantidade": 10,
-      "custo": 100,
-      "preco": 200,
-      "key": "xyz2"
-    },
-    {
-      "id": 1,
-      "nome": "Amortecedor",
-      "fabricante": "Scud",
-      "marca": {
-        "id": "10",
-        "nome": "Honda"
-      },
-      "modelo": "CG",
-      "anoInicial": 2000,
-      "anoFinal": 2009,
-      "quantidade": 1,
-      "custo": 50,
-      "preco": 100,
-      "key": "xyz"
-    },
-    {
-      "id": 2,
       "nome": "Bengala",
       "fabricante": "Scud",
       "marca": {
-        "id": "10",
-        "nome": "Honda"
+        "id": "11",
+        "nome": "Kasinski"
       },
-      "modelo": "Alba",
-      "anoInicial": 2000,
-      "anoFinal": 2009,
-      "quantidade": 10,
-      "custo": 100,
-      "preco": 200,
-      "key": "xyz1"
-    },
-    {
-      "marca": {
-        "id": "18",
-        "nome": "MXF"
-      },
-      "nome": "teste",
-      "fabricante": "teste",
-      "modelo": "teste",
-      "ano_inicial": "1",
-      "ano_final": "1",
-      "custo": "1",
-      "quantidade": "1",
-      "anoInicial": "3",
-      "anoFinal": "2",
-      "preco": "1",
-      "id": 4
-    },
-    {
-      "nome": "tste",
-      "fabricante": "test",
-      "marca": {
-        "id": "18",
-        "nome": "MXF"
-      },
-      "modelo": "1",
-      "anoInicial": "1",
-      "anoFinal": "",
-      "quantidade": "1",
-      "custo": "1",
-      "preco": "1",
-      "id": 5
+      "modelo": "Mirage 150",
+      "anoInicial": "2011",
+      "anoFinal": "2018",
+      "custo": "100",
+      "preco": "200",
+      "quantidade": "2",
+      "id": 2
     }
   ],
   "marcas": [

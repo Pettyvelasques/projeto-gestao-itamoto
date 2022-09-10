@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './index.module.css'
 
-import { BsPencil, BsFillTrashFill } from 'react-icons/bs'
+import { BsSearch } from 'react-icons/bs'
 
 function ClientsCard({ id, nome, sobrenome, telefone, marca, modelo, cilindrada, ano }) {
 
@@ -16,7 +16,7 @@ function ClientsCard({ id, nome, sobrenome, telefone, marca, modelo, cilindrada,
             <p>{ano}</p>
             <p>
                 <Link to={`./clientes/${id}`}>
-                    <BsPencil />
+                    <BsSearch />
                 </Link>
             </p>
         </div>

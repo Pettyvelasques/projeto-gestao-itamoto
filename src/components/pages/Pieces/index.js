@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import styles from './index.module.css'
 import Message from "../../layout/Message";
-import PiecesCard from "../../project/cards/PiecesCard";
+import PiecesCard from "../../project/Cards/PiecesCard";
 import Container from "../../layout/Container";
 import LinkButton from "../../layout/LinkButton";
 
@@ -57,18 +57,18 @@ function Pieces() {
     let a = x.modelo.toUpperCase(),
     b = y.modelo.toUpperCase();
 
-    return a == b ? 0 : a > b ? 1 : -1 ;
+    return a === b ? 0 : a > b ? 1 : -1 ;
   }
 
   return (
     <Container customClass="start">
       <div className={styles.search_container}>
-        <input type="text"
+        <input type="search"
           placeholder="Digite para pesquisar"
           onChange={handleOnChange}
           value={wordEntered}
         />
-        <LinkButton to="/newbuy" text="+" />
+        <LinkButton to="/newpiece" text="+" />
       </div>
       {message && <Message type={type} msg={message} />}
 
@@ -81,7 +81,7 @@ function Pieces() {
         <p> Ano Final </p>
         <p> Quantidade </p>
         <p> Preço </p>
-        <p> Editar </p>
+        <p>  </p>
       </div>
       {filteredData.length !== 0 && (
         <div className={styles.search_result}>

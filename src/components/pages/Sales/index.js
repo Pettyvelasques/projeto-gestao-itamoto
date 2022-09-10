@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SalesCard from "../../project/cards/SalesCard";
+import SalesCard from "../../project/Cards/SalesCard";
 import Container from "../../layout/Container";
 import LinkButton from "../../layout/LinkButton";
 
@@ -59,8 +59,8 @@ function Sales() {
         <p> Telefone </p>
         <p> Total de Itens </p>
         <p> Valor Total </p>
-        <p> Forma de Pagamento </p>
-        <p> Editar </p>
+        <p> Pagamento </p>
+        <p>  </p>
       </div>
       {filteredData.length !== 0 && (
         <div className={styles.search_result}>
