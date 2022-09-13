@@ -1,16 +1,14 @@
 import { useLocation } from "react-router-dom"
-
 import { useState, useEffect } from "react";
 
 import styles from './index.module.css'
-import Message from "../../layout/Message";
-import ClientsCard from "../../project/Cards/ClientsCard";
-import Container from "../../layout/Container";
-import LinkButton from "../../layout/LinkButton";
+import PiecesCard from "../PiecesCard"
+import Container from "../../../layout/Container";
+import LinkButton from "../../../layout/LinkButton";
+import Message from "../../../layout/Message";
 
-
-function Clientes() {
-  const [clients, setClients] = useState({})
+function Pieces() {
+  const [pieces, setPieces] = useState([])
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
@@ -25,7 +23,7 @@ function Clientes() {
   useEffect(() => {
     setTimeout(
       () => {
-        fetch("http://localhost:5000/clientes", {
+        fetch("http://localhost:5000/pecas", {
           method: 'GET',
           headers: {
             'Content-type': 'application/json',
@@ -33,7 +31,7 @@ function Clientes() {
         })
           .then(resp => resp.json())
           .then(data => {
-            setClients(data)
+            setPieces(data)
             setFilteredData(data)
           })
           .catch((err) => console.log(err))
@@ -43,22 +41,26 @@ function Clientes() {
   const handleOnChange = (e) => {
     const searchWord = e.target.value
     setWordEntered(searchWord)
-    const newFilter = clients.filter((value) => {
+    const newFilter = pieces.filter((value) => {
       return value.nome.toLowerCase().includes(searchWord.toLowerCase())
     })
 
     if (searchWord === "") {
-      setFilteredData(clients)
+      setFilteredData(pieces)
     } else {
       setFilteredData(newFilter)
     }
   }
 
-  const setOrderName = (x , y) => {
-    let a = x.nome.toUpperCase(),
-    b = y.nome.toUpperCase();
+  const setOrderModel = (x, y) => {
+    let a = x.modelo.toUpperCase(),
+      b = y.modelo.toUpperCase();
 
-    return a === b ? 0 : a > b ? 1 : -1 ;
+    return a === b ? 0 : a > b ? 1 : -1;
+  }
+
+  function capitalizeFirstLetter(a) {
+    return a.charAt(0).toUpperCase() + a.slice(1);
   }
 
   return (
@@ -69,33 +71,36 @@ function Clientes() {
           onChange={handleOnChange}
           value={wordEntered}
         />
-        <LinkButton to="/newclient" text="+" />
+        <LinkButton to="/newpiece" text="+" />
       </div>
       {message && <Message type={type} msg={message} />}
 
       <div className={styles.index_result}>
         <p> Nome </p>
-        <p> Sobrenome </p>
-        <p> Telefone </p>
+        <p> Fabricante </p>
         <p> Marca </p>
         <p> Modelo </p>
         <p> Cilindrada </p>
-        <p> Ano </p>
+        <p> Ano Inicial </p>
+        <p> Ano Final </p>
         <p>  </p>
       </div>
+
       {filteredData.length !== 0 && (
         <div className={styles.search_result}>
-          {filteredData.slice().sort(setOrderName).map((value) => {
+          {filteredData.slice().sort(setOrderModel).map((value) => {
             return (
-              <ClientsCard
+              <PiecesCard
                 id={value.id}
-                nome={value.nome}
-                sobrenome={value.sobrenome}
-                telefone={value.telefone}
+                nome={capitalizeFirstLetter(value.nome)}
+                fabricante={capitalizeFirstLetter(value.fabricante)}
                 marca={value.marca.nome}
-                modelo={value.modelo}
+                modelo={capitalizeFirstLetter(value.modelo)}
                 cilindrada={value.cilindrada}
-                ano={value.ano}
+                de={value.anoInicial}
+                ate={value.anoFinal}
+                quantidade={value.quantidade}
+                preco={value.preco}
                 key={value.id}
               />
             );
@@ -103,11 +108,11 @@ function Clientes() {
         </div>
       )
       }
-      {clients.length === 0 && (
-        <p>Não há clientes cadastrados!</p>
+      {pieces.length === 0 && (
+        <p>Não há peças cadastradas!</p>
       )}
     </Container>
   )
 }
 
-export default Clientes;
+export default Pieces;

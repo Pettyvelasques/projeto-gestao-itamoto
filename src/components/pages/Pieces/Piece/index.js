@@ -4,10 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { BsPencil, BsFillTrashFill } from 'react-icons/bs'
 
 import styles from './index.module.css'
-import Container from '../../layout/Container'
-import NewPieceForm from '../../project/Forms/NewPieceForm'
-import Message from '../../layout/Message'
-import Loading from '../../layout/Loading'
+import Container from '../../../layout/Container'
+import NewPieceForm from '../NewPieceForm'
+import Message from '../../../layout/Message'
+import Loading from '../../../layout/Loading'
 
 function Piece() {
 
@@ -117,7 +117,7 @@ function Piece() {
                     </div>
                     <div className={styles.details_container}>
                         {!showPieceForm ? (
-                            <div className={styles.project_info}>
+                            <div className={styles.piece_info}>
                                 <p>
                                     <span>Nome: </span> {peca.nome}
                                 </p>
@@ -129,6 +129,9 @@ function Piece() {
                                 </p>
                                 <p>
                                     <span>Modelo: </span> {peca.modelo}
+                                </p>
+                                <p>
+                                    <span>Cilindrada: </span> {peca.cilindrada}
                                 </p>
                                 <p>
                                     <span>Ano Inicial: </span> {peca.anoInicial}
@@ -147,7 +150,7 @@ function Piece() {
                                 </p>
                             </div>
                         ) : (
-                            <div className={styles.project_form}>
+                            <div className={styles.piece_form}>
                                 <NewPieceForm
                                     handleSubmit={editPost}
                                     btnText="Salvar"

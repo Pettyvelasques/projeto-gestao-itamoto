@@ -23,7 +23,7 @@
     color: #e61818;
 }
 
-.project_info {
+.piece_info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2.5em 2em;
@@ -31,11 +31,11 @@
     margin: 2em 0;  
 }
 
-.project_info p {
+.piece_info p {
     padding-left: 0.5em;
     margin-top: 0.5em;
 }
 
-.project_info span {
+.piece_info span {
     font-weight: bold;
 }

@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import Home from './components/pages/Home';
-import Pieces from './components/pages/Pieces'
-import NewPiece from './components/pages/NewPiece'
-import Piece from './components/pages/Piece';
-import Clients from './components/pages/Clients'
-import NewClient from './components/pages/NewClient'
-import Sales from './components/pages/Sales'
-import NewSale from './components/pages/NewSale'
+import Home from './components/pages/Home/HomeMain';
+import Pieces from './components/pages/Pieces/PiecesMain'
+import NewPiece from './components/pages/Pieces/NewPiece'
+import Piece from './components/pages/Pieces/Piece';
+import Clients from './components/pages/Clients/ClientsMain'
+import NewClient from './components/pages/Clients/NewClient'
+import Client from './components/pages/Clients/Client';
+import Sales from './components/pages/Sales/SalesMain'
+import NewSale from './components/pages/Sales/NewSale'
 import Finance from './components/pages/Finance'
 
 import Navbar from './components/layout/Navbar/index';
@@ -20,12 +21,13 @@ function App() {
       <Navbar />
       <Container customClass="min-height">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route url="home" path="/" element={<Home />} />
           <Route path="/pieces" element={<Pieces />} />
           <Route path="/newpiece" element={<NewPiece />} />
           <Route path="/pieces/pecas/:id" element={<Piece />} />
           <Route path="/clients" element={<Clients />} />
           <Route path="/newclient" element={<NewClient />} />
+          <Route path="/clients/clientes/:id" element={<Client />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/newsale" element={<NewSale />} />
           <Route path="/finance" element={<Finance />} />

@@ -3,13 +3,12 @@ import styles from './index.module.css'
 
 import { BsSearch } from 'react-icons/bs'
 
-function ClientsCard({ id, nome, sobrenome, telefone, marca, modelo, cilindrada, ano }) {
+function ClientsCard({ id, nome, sobrenome, marca, modelo, cilindrada, ano }) {
 
     return (
         <div className={styles.search_card}>
             <p>{nome}</p>
             <p>{sobrenome}</p>
-            <p>{telefone}</p>
             <p>{marca}</p>
             <p>{modelo}</p>
             <p>{cilindrada}</p>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import SalesCard from "../../project/Cards/SalesCard";
-import Container from "../../layout/Container";
-import LinkButton from "../../layout/LinkButton";
+import SalesCard from "../SalesCard";
+import Container from "../../../layout/Container";
+import LinkButton from "../../../layout/LinkButton";
 
 import styles from './index.module.css'
 
@@ -42,6 +42,17 @@ function Sales() {
     }
   }
 
+  const setOrderModel = (x, y) => {
+    let a = x.modelo.toUpperCase(),
+      b = y.modelo.toUpperCase();
+
+    return a === b ? 0 : a > b ? 1 : -1;
+  }
+
+  function capitalizeFirstLetter(a) {
+    return a.charAt(0).toUpperCase() + a.slice(1);
+  }
+
   return (
     <Container customClass="start">
       <div className={styles.search_container}>
@@ -62,9 +73,10 @@ function Sales() {
         <p> Pagamento </p>
         <p>  </p>
       </div>
+
       {filteredData.length !== 0 && (
         <div className={styles.search_result}>
-          {filteredData.slice().map((value) => {
+          {filteredData.slice().sort(setOrderModel).map((value) => {
             return (
               <SalesCard
                 id={value.id}

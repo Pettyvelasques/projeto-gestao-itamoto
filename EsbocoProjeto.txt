@@ -22,7 +22,7 @@ marca (id, nome)
 modelo moto
 ano inicial
 ano final
-quantodade
+quantidade
 custo
 preco
 categoria(id, nome)

@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 import styles from './index.module.css'
-import NewPieceForm from '../../project/Forms/NewPieceForm'
-import Message from '../../layout/Message'
-import Container from "../../layout/Container";
+import NewPieceForm from '../NewPieceForm'
+import Message from '../../../layout/Message'
+import Container from "../../../layout/Container";
 
 
 function NewPiece() {
@@ -38,6 +38,13 @@ function NewPiece() {
         }
         else if (!peca.modelo) {
             setMessage('Modelo da moto não definido')
+            setType('error')
+
+            setTimeout(() => { setMessage('') }, 2500);
+            return false
+        }
+        else if (!peca.cilindrada) {
+            setMessage('Cilindrada da moto não definida')
             setType('error')
 
             setTimeout(() => { setMessage('') }, 2500);
@@ -88,8 +95,6 @@ function NewPiece() {
         })
             .then(resp => resp.json())
             .then((data) => {
-                console.log(data)
-                //redirect
                 navigate('/pieces', { state: { type: 'success', message: 'Peça cadastrada com sucesso!' } })
             })
             .catch(err => console.log(err))

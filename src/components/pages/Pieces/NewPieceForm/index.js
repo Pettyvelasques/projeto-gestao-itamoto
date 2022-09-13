@@ -18,7 +18,7 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
             },
         })
             .then((resp) => resp.json())
-            .then((data) => { setDados(data) })
+            .then((data) => { setDados(data.sort(setOrderName)) })
             .catch((err) => console.log(err))
     }, [])
 
@@ -39,6 +39,12 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
             }
         })
     }
+    const setOrderName = (x, y) => {
+      let a = x.nome.toUpperCase(),
+      b = y.nome.toUpperCase();
+  
+      return a === b ? 0 : a > b ? 1 : -1;
+    }
 
     return (
         <form onSubmit={submit} className={styles.form}>
@@ -50,7 +56,7 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
                     placeholder="Insira o nome da peça"
                     handleOnChange={handleChange}
                     value={peca.nome ? peca.nome : ''}
-                    disabled = {disabled}
+                    disabled={disabled}
                 />
             </div>
             <div>
@@ -61,7 +67,7 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
                     placeholder="Insira o nome do fabricante"
                     handleOnChange={handleChange}
                     value={peca.fabricante ? peca.fabricante : ''}
-                    disabled = {disabled}
+                    disabled={disabled}
                 />
             </div>
             <div>
@@ -71,7 +77,7 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
                     options={dados}
                     handleOnChange={handleBrand}
                     value={peca.marca ? peca.marca.id : ''}
-                    disabled = {disabled}
+                    disabled={disabled}
                 />
             </div>
             <div>
@@ -82,7 +88,18 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
                     placeholder="Insira o modelo da moto"
                     handleOnChange={handleChange}
                     value={peca.modelo ? peca.modelo : ''}
-                    disabled = {disabled}
+                    disabled={disabled}
+                />
+            </div>
+            <div>
+                <Input
+                    name="cilindrada"
+                    type="number"
+                    text="Cilindrada da Moto"
+                    placeholder="Insira a cilindrada da moto"
+                    handleOnChange={handleChange}
+                    value={peca.cilindrada ? peca.cilindrada : ''}
+                    disabled={disabled}
                 />
             </div>
             <div>
@@ -93,7 +110,7 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
                     placeholder="Insira o ano inicial do modelo"
                     handleOnChange={handleChange}
                     value={peca.anoInicial ? peca.anoInicial : ''}
-                    disabled = {disabled}
+                    disabled={disabled}
                 />
             </div>
             <div>
@@ -104,7 +121,7 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
                     placeholder="Insira o ano final do modelo"
                     handleOnChange={handleChange}
                     value={peca.anoFinal ? peca.anoFinal : ''}
-                    disabled = {disabled}
+                    disabled={disabled}
                 />
             </div>
             <div>
@@ -141,7 +158,7 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
                 <SubmitButton
                     text={btnText}
                 />
-            </div>  
+            </div>
         </form>
     )
 }

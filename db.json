@@ -7,11 +7,28 @@
         "id": "11",
         "nome": "Kasinski"
       },
-      "modelo": "Mirage 150",
+      "modelo": "Mirage",
+      "cilindrada": "150",
       "anoInicial": "2011",
       "anoFinal": "2018",
       "custo": "100",
       "preco": "200",
+      "quantidade": "2",
+      "id": 1
+    },
+    {
+      "nome": "Disco de Freio",
+      "fabricante": "Tmac",
+      "marca": {
+        "id": "10",
+        "nome": "Honda"
+      },
+      "modelo": "CG",
+      "cilindrada": "160",
+      "anoInicial": "2020",
+      "anoFinal": "2022",
+      "custo": "100",
+      "preco": "160",
       "quantidade": "2",
       "id": 2
     }
@@ -149,23 +166,24 @@
   "compras": [],
   "clientes": [
     {
-      "id": 1,
       "nome": "Patrick",
-      "sobrenome": "Velasques Pessanha",
-      "endereco": "Av. São João Batista",
-      "numero": 384,
-      "complemento": "A8-24",
+      "sobrenome": "Velasques",
+      "endereco": "Avenida São João Batista",
+      "numero": "384",
       "bairro": "Rudge Ramos",
       "cidade": "São Bernardo do Campo",
-      "telefone": "(11) 97309-5495",
+      "cep": "09635000",
+      "ddd": "11",
+      "telefone": "973095495",
       "marca": {
-        "id": 11,
+        "id": "11",
         "nome": "Kasinski"
       },
       "modelo": "Mirage",
-      "cilindrada": 150,
-      "ano": 2011,
-      "key": "xyz2"
+      "cilindrada": "150",
+      "ano": "2011",
+      "id": 1,
+      "complemento": "A8-24"
     }
   ],
   "vendas": [
