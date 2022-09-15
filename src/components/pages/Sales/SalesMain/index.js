@@ -48,10 +48,10 @@ function Sales() {
 
     return a === b ? 0 : a > b ? 1 : -1;
   }
-
+/* 
   function capitalizeFirstLetter(a) {
     return a.charAt(0).toUpperCase() + a.slice(1);
-  }
+  } */
 
   return (
     <Container customClass="start">

@@ -16,15 +16,10 @@
 }
 
 .search_card p {
-    color: #222;/* 
-    font-size: 1em; */
-    width: 100%;/* 
-    height: auto; */
+    color: #222;
+    width: 100%;
 }
 
-.search_card a {/* 
-    text-decoration: none;
-    border: none;
-    font-size: 1em; */
+.search_card a {
     color: #e61818;
 }

@@ -1,3 +1,4 @@
+
 import styles from './index.module.css'
 
 import Container from "../../../layout/Container"
@@ -8,10 +9,11 @@ import LogoClientes from '../../../../img/clientes_icon.png'
 import LogoFinanceiro from '../../../../img/financeiro_icon.png'
 
 function Home() {
+
     return (
         <div className={styles.home_container}>
             <h1>
-                <img src={Logo} alt="Mechanic Tools Logo" />
+                <img src={Logo} alt="Logo Oficina Itamoto" />
             </h1>
             <Container customClass="center">
                 <HomeCard

@@ -22,20 +22,20 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
             .catch((err) => console.log(err))
     }, [])
 
-    const submit = (e) => {
-        e.preventDefault()
+    const submit = (a) => {
+        a.preventDefault()
         handleSubmit(peca)
     }
 
-    function handleChange(e) {
-        setPeca({ ...peca, [e.target.name]: e.target.value })
+    function handleChange(b) {
+        setPeca({ ...peca, [b.target.name]: b.target.value })
     }
 
-    function handleBrand(e) {
+    function handleBrand(c) {
         setPeca({
             ...peca, marca: {
-                id: e.target.value,
-                nome: e.target.options[e.target.selectedIndex].text
+                id: c.target.value,
+                nome: c.target.options[c.target.selectedIndex].text
             }
         })
     }
@@ -44,6 +44,10 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
       b = y.nome.toUpperCase();
   
       return a === b ? 0 : a > b ? 1 : -1;
+    }
+
+    function capitalizeFirstLetter(b) {
+      return b.charAt(0).toUpperCase() + b.slice(1);
     }
 
     return (
@@ -55,7 +59,7 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
                     text="Nome da Peça"
                     placeholder="Insira o nome da peça"
                     handleOnChange={handleChange}
-                    value={peca.nome ? peca.nome : ''}
+                    value={peca.nome ? peca.nome.split(' ').map(capitalizeFirstLetter).join(' ') : ''}
                     disabled={disabled}
                 />
             </div>
@@ -66,14 +70,14 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
                     text="Fabricante da Peça"
                     placeholder="Insira o nome do fabricante"
                     handleOnChange={handleChange}
-                    value={peca.fabricante ? peca.fabricante : ''}
+                    value={peca.fabricante ? peca.fabricante.split(' ').map(capitalizeFirstLetter).join(' ') : ''}
                     disabled={disabled}
                 />
             </div>
             <div>
                 <Select
                     nome="marca_id"
-                    text="Selecione a marca"
+                    text="Selecione a marca da moto"
                     options={dados}
                     handleOnChange={handleBrand}
                     value={peca.marca ? peca.marca.id : ''}
@@ -87,7 +91,7 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
                     text="Modelo da Moto"
                     placeholder="Insira o modelo da moto"
                     handleOnChange={handleChange}
-                    value={peca.modelo ? peca.modelo : ''}
+                    value={peca.modelo ? peca.modelo.split(' ').map(capitalizeFirstLetter).join(' ') : ''}
                     disabled={disabled}
                 />
             </div>
@@ -154,6 +158,7 @@ function NewPieceForm({ handleSubmit, btnText, pecaData, disabled }) {
                     value={peca.quantidade ? peca.quantidade : ''}
                 />
             </div>
+            <div />
             <div className={styles.form_button}>
                 <SubmitButton
                     text={btnText}

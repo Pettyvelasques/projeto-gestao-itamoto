@@ -46,6 +46,10 @@ function NewClientForm({ handleSubmit, btnText, clienteData, disabled }) {
       return a === b ? 0 : a > b ? 1 : -1;
     }
 
+    function capitalizeFirstLetter(b) {
+        return b.charAt(0).toUpperCase() + b.slice(1).toLowerCase();
+    }
+
     return (
         <form onSubmit={submit} className={styles.form}>
             <div>
@@ -55,7 +59,7 @@ function NewClientForm({ handleSubmit, btnText, clienteData, disabled }) {
                     text="Nome do cliente"
                     placeholder="Insira o nome do cliente"
                     handleOnChange={handleChange}
-                    value={cliente.nome ? cliente.nome : ''}
+                    value={cliente.nome ? cliente.nome.split(' ').map(capitalizeFirstLetter).join(' ') : ''}
                     disabled = {disabled}
                 />
             </div>
@@ -66,7 +70,7 @@ function NewClientForm({ handleSubmit, btnText, clienteData, disabled }) {
                     text="Sobrenome do cliente"
                     placeholder="Insira o sobrenome do cliente"
                     handleOnChange={handleChange}
-                    value={cliente.sobrenome ? cliente.sobrenome : ''}
+                    value={cliente.sobrenome ? cliente.sobrenome.split(' ').map(capitalizeFirstLetter).join(' ') : ''}
                     disabled = {disabled}
                 />
             </div>
@@ -97,7 +101,7 @@ function NewClientForm({ handleSubmit, btnText, clienteData, disabled }) {
                     text="Endereço do cliente"
                     placeholder="Insira o endereço do cliente"
                     handleOnChange={handleChange}
-                    value={cliente.endereco ? cliente.endereco : ''}
+                    value={cliente.endereco ? cliente.endereco.split(' ').map(capitalizeFirstLetter).join(' ') : ''}
                 />
             </div>
             <div>
@@ -117,7 +121,7 @@ function NewClientForm({ handleSubmit, btnText, clienteData, disabled }) {
                     text="Complemento do endereço do cliente"
                     placeholder="Insira o complemento de endereço do cliente"
                     handleOnChange={handleChange}
-                    value={cliente.complemento ? cliente.complemento : ''}
+                    value={cliente.complemento ? cliente.complemento.split(' ').map(capitalizeFirstLetter).join(' ') : ''}
                 />
             </div>
             <div>
@@ -127,7 +131,7 @@ function NewClientForm({ handleSubmit, btnText, clienteData, disabled }) {
                     text="Bairro do endereço do cliente"
                     placeholder="Insira o bairro do cliente"
                     handleOnChange={handleChange}
-                    value={cliente.bairro ? cliente.bairro : ''}
+                    value={cliente.bairro ? cliente.bairro.split(' ').map(capitalizeFirstLetter).join(' ') : ''}
                 />
             </div>
             <div>
@@ -137,7 +141,7 @@ function NewClientForm({ handleSubmit, btnText, clienteData, disabled }) {
                     text="Cidade do cliente"
                     placeholder="Insira a cidade do cliente"
                     handleOnChange={handleChange}
-                    value={cliente.cidade ? cliente.cidade : ''}
+                    value={cliente.cidade ? cliente.cidade.split(' ').map(capitalizeFirstLetter).join(' ') : ''}
                 />
             </div>
             <div>
@@ -166,7 +170,7 @@ function NewClientForm({ handleSubmit, btnText, clienteData, disabled }) {
                     text="Modelo do veículo do cliente"
                     placeholder="Insira o modelo do veículo do cliente"
                     handleOnChange={handleChange}
-                    value={cliente.modelo ? cliente.modelo : ''}
+                    value={cliente.modelo ? cliente.modelo.split(' ').map(capitalizeFirstLetter).join(' ') : ''}
                 />
             </div>
             <div>

@@ -37,15 +37,15 @@ function Client() {
 
     }, [id])
 
-    function editPost(cliente) {
+    function editPost(a) {
         setMessage('');
         let resultado = window.confirm("Deseja salvar as alterações?");
-        
+
         if (resultado === false) {
             return false
         }
 
-        if (cliente.lenght > 11) {
+        if (a.lenght > 11) {
             console.log("tudo normal!")
             setMessage('O preço do produto não pode ser inferior ao seu custo!')
             setType('error')
@@ -59,7 +59,7 @@ function Client() {
             headers: {
                 'Content-type': 'application/json',
             },
-            body: JSON.stringify(cliente),
+            body: JSON.stringify(a),
         })
             .then(resp => resp.json())
             .then((data) => {
@@ -72,7 +72,7 @@ function Client() {
             .catch((err) => console.log(err))
     }
 
-    function removeClient(cliente) {
+    function removeClient(b) {
 
         let resultado = window.confirm("Tem certeza que deseja excluir esse cadastro?");
         if (resultado === false) {
@@ -87,7 +87,7 @@ function Client() {
         })
             .then(resp => resp.json())
             .then(() => {
-                setCliente(cliente.filter((cliente) => cliente.id !== id))
+                setCliente(b.filter((cliente) => cliente.id !== id))
 
             })
             .catch((err) => console.log(err))
@@ -100,13 +100,17 @@ function Client() {
         setShowClientForm(!showClientForm)
     }
 
+    function capitalizeFirstLetter(b) {
+        return b.charAt(0).toUpperCase() + b.slice(1).toLowerCase();
+    }
+
     return (
         <>
             {cliente.nome ? (
                 <Container customClass='start'>
                     {message && <Message type={type} msg={message} />}
                     <div className={styles.title_container}>
-                        <h1> {cliente.nome} {cliente.sobrenome} </h1>
+                        <h1> {cliente.nome.split(' ').map(capitalizeFirstLetter).join(' ')} {cliente.sobrenome.split(' ').map(capitalizeFirstLetter).join(' ')} </h1>
                         <div className={styles.buttons_container}>
                             <button className={styles.btn} onClick={toggleClientForm}>
                                 {!showClientForm ? <BsPencil /> : "X"}
@@ -120,10 +124,10 @@ function Client() {
                         {!showClientForm ? (
                             <div className={styles.client_info}>
                                 <p>
-                                    <span>Nome: </span> {cliente.nome}
+                                    <span>Nome: </span> {cliente.nome.split(' ').map(capitalizeFirstLetter).join(' ')}
                                 </p>
                                 <p>
-                                    <span>Sobrenome: </span> {cliente.sobrenome}
+                                    <span>Sobrenome: </span> {cliente.sobrenome.split(' ').map(capitalizeFirstLetter).join(' ')}
                                 </p>
                                 <p>
                                     <span>DDD: </span> {cliente.ddd}
@@ -132,19 +136,19 @@ function Client() {
                                     <span>Telefone: </span> {cliente.telefone}
                                 </p>
                                 <p>
-                                    <span>Endereço: </span> {cliente.endereco}
+                                    <span>Endereço: </span> {cliente.endereco.split(' ').map(capitalizeFirstLetter).join(' ')}
                                 </p>
                                 <p>
                                     <span>Número: </span> {cliente.numero}
                                 </p>
                                 <p>
-                                    <span>Complemento: </span> {cliente.complemento}
+                                    <span>Complemento: </span> {cliente.complemento.split(' ').map(capitalizeFirstLetter).join(' ')}
                                 </p>
                                 <p>
-                                    <span>Bairro: </span> {cliente.bairro}
+                                    <span>Bairro: </span> {cliente.bairro.split(' ').map(capitalizeFirstLetter).join(' ')}
                                 </p>
                                 <p>
-                                    <span>Cidade: </span> {cliente.cidade}
+                                    <span>Cidade: </span> {cliente.cidade.split(' ').map(capitalizeFirstLetter).join(' ')}
                                 </p>
                                 <p>
                                     <span>CEP: </span> {cliente.cep}
@@ -153,7 +157,7 @@ function Client() {
                                     <span>Marca: </span> {cliente.marca.nome}
                                 </p>
                                 <p>
-                                    <span>Modelo: </span> {cliente.modelo}
+                                    <span>Modelo: </span> {cliente.modelo.split(' ').map(capitalizeFirstLetter).join(' ')}
                                 </p>
                                 <p>
                                     <span>Cilindrada: </span> {cliente.cilindrada}

@@ -1,5 +1,7 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
+import Login from './components/pages/Login/LoginMain';
 import Home from './components/pages/Home/HomeMain';
 import Pieces from './components/pages/Pieces/PiecesMain'
 import NewPiece from './components/pages/Pieces/NewPiece'
@@ -16,21 +18,23 @@ import Container from './components/layout/Container/index';
 import Footer from './components/layout/Footer/index';
 
 function App() {
+
   return (
     <Router>
       <Navbar />
       <Container customClass="min-height">
         <Routes>
-          <Route url="home" path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/pieces" element={<Pieces />} />
           <Route path="/newpiece" element={<NewPiece />} />
-          <Route path="/pieces/pecas/:id" element={<Piece />} />
+          <Route path="/pieces/pecas/:id" element={<Piece />}  />
           <Route path="/clients" element={<Clients />} />
           <Route path="/newclient" element={<NewClient />} />
           <Route path="/clients/clientes/:id" element={<Client />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/newsale" element={<NewSale />} />
           <Route path="/finance" element={<Finance />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Container>
       <Footer />

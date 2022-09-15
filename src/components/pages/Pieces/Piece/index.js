@@ -37,7 +37,7 @@ function Piece() {
 
     }, [id])
 
-    function editPost(peca) {
+    function editPost(a) {
         setMessage('');
         let resultado = window.confirm("Deseja salvar as alterações?");
         
@@ -45,7 +45,7 @@ function Piece() {
             return false
         }
 
-        else if (parseFloat(peca.preco) < parseFloat(peca.custo)) {
+        else if (parseFloat(a.preco) < parseFloat(a.custo)) {
             setMessage('O preço do produto não pode ser inferior ao seu custo!')
             setType('error')
 
@@ -58,7 +58,7 @@ function Piece() {
             headers: {
                 'Content-type': 'application/json',
             },
-            body: JSON.stringify(peca),
+            body: JSON.stringify(a),
         })
             .then(resp => resp.json())
             .then((data) => {
@@ -71,7 +71,7 @@ function Piece() {
             .catch((err) => console.log(err))
     }
 
-    function removePiece(peca) {
+    function removePiece(b) {
 
         let resultado = window.confirm("Tem certeza que deseja excluir essa peça?");
         if (resultado === false) {
@@ -86,7 +86,7 @@ function Piece() {
         })
             .then(resp => resp.json())
             .then(() => {
-                setPeca(peca.filter((peca) => peca.id !== id))
+                setPeca(b.filter((peca) => peca.id !== id))
 
             })
             .catch((err) => console.log(err))
@@ -99,13 +99,17 @@ function Piece() {
         setShowPieceForm(!showPieceForm)
     }
 
+    function capitalizeFirstLetter(b) {
+      return b.charAt(0).toUpperCase() + b.slice(1);
+    }
+
     return (
         <>
             {peca.nome ? (
                 <Container customClass='start'>
                     {message && <Message type={type} msg={message} />}
                     <div className={styles.title_container}>
-                        <h1> {peca.nome} {peca.fabricante} </h1>
+                        <h1> {peca.nome.split(' ').map(capitalizeFirstLetter).join(' ')} {peca.fabricante.split(' ').map(capitalizeFirstLetter).join(' ')} </h1>
                         <div className={styles.buttons_container}>
                             <button className={styles.btn} onClick={togglePieceForm}>
                                 {!showPieceForm ? <BsPencil /> : "X"}
@@ -119,16 +123,16 @@ function Piece() {
                         {!showPieceForm ? (
                             <div className={styles.piece_info}>
                                 <p>
-                                    <span>Nome: </span> {peca.nome}
+                                    <span>Nome: </span> {peca.nome.split(' ').map(capitalizeFirstLetter).join(' ')}
                                 </p>
                                 <p>
-                                    <span>Fabricante: </span> {peca.fabricante}
+                                    <span>Fabricante: </span> {peca.fabricante.split(' ').map(capitalizeFirstLetter).join(' ')}
                                 </p>
                                 <p>
                                     <span>Marca: </span> {peca.marca.nome}
                                 </p>
                                 <p>
-                                    <span>Modelo: </span> {peca.modelo}
+                                    <span>Modelo: </span> {peca.modelo.split(' ').map(capitalizeFirstLetter).join(' ')}
                                 </p>
                                 <p>
                                     <span>Cilindrada: </span> {peca.cilindrada}

@@ -2,10 +2,11 @@ import { useLocation } from "react-router-dom"
 import { useState, useEffect } from "react";
 
 import styles from './index.module.css'
-import PiecesCard from "../PiecesCard"
+import SearchCard from "../../../form/SearchCard";
 import Container from "../../../layout/Container";
-import LinkButton from "../../../layout/LinkButton";
+import Button from "../../../layout/Button";
 import Message from "../../../layout/Message";
+import Login from "../../Login/LoginMain";
 
 function Pieces() {
   const [pieces, setPieces] = useState([])
@@ -38,11 +39,17 @@ function Pieces() {
       }, 300)
   }, [])
 
-  const handleOnChange = (e) => {
-    const searchWord = e.target.value
+  const handleOnChange = (a) => {
+    const searchWord = a.target.value
     setWordEntered(searchWord)
     const newFilter = pieces.filter((value) => {
-      return value.nome.toLowerCase().includes(searchWord.toLowerCase())
+      return (
+        value.nome.toLowerCase().includes(searchWord.toLowerCase())
+        || value.fabricante.toLowerCase().includes(searchWord.toLowerCase())
+        || value.marca.nome.toLowerCase().includes(searchWord.toLowerCase())
+        || value.modelo.toLowerCase().includes(searchWord.toLowerCase())
+        || value.cilindrada.toLowerCase().includes(searchWord.toLowerCase())
+      )
     })
 
     if (searchWord === "") {
@@ -59,59 +66,75 @@ function Pieces() {
     return a === b ? 0 : a > b ? 1 : -1;
   }
 
-  function capitalizeFirstLetter(a) {
-    return a.charAt(0).toUpperCase() + a.slice(1);
+  function capitalizeFirstLetter(b) {
+    return b.charAt(0).toUpperCase() + b.slice(1);
+  }
+  
+  var blockModal = document.getElementsByClassName("modal_container");
+
+  function openModal() {
+    console.log("aparecendo modal")
+    blockModal.style.display = "block";
+  }
+
+  function closeModal() {
+    blockModal.style.display = "none";
   }
 
   return (
     <Container customClass="start">
+      <div className={styles.modal_container} /* style={{display: blockModal ? 'flex' : 'none'}} */>
+        <Login closeModal={closeModal}/>
+      </div>
       <div className={styles.search_container}>
         <input type="search"
           placeholder="Digite para pesquisar"
           onChange={handleOnChange}
           value={wordEntered}
         />
-        <LinkButton to="/newpiece" text="+" />
+        <Button onClick={openModal} text="+" />
       </div>
-      {message && <Message type={type} msg={message} />}
+      { message && <Message type={type} msg={message} /> }
 
-      <div className={styles.index_result}>
-        <p> Nome </p>
-        <p> Fabricante </p>
-        <p> Marca </p>
-        <p> Modelo </p>
-        <p> Cilindrada </p>
-        <p> Ano Inicial </p>
-        <p> Ano Final </p>
-        <p>  </p>
+  <div className={styles.index_result}>
+    <p> Nome </p>
+    <p> Fabricante </p>
+    <p> Marca </p>
+    <p> Modelo </p>
+    <p> Cilindrada </p>
+    <p> Ano Inicial </p>
+    <p> Ano Final </p>
+    <p>  </p>
+  </div>
+
+  {
+    filteredData.length !== 0 && (
+      <div className={styles.search_result}>
+        {filteredData.slice().sort(setOrderModel).map((value) => {
+          return (
+            <SearchCard
+              id_place="pecas"
+              id_item={value.id}
+              a={value.nome.split(' ').map(capitalizeFirstLetter).join(' ')}
+              b={value.fabricante.split(' ').map(capitalizeFirstLetter).join(' ')}
+              c={value.marca.nome}
+              d={value.modelo.split(' ').map(capitalizeFirstLetter).join(' ')}
+              e={value.cilindrada}
+              f={value.anoInicial}
+              g={value.anoFinal}
+              key={value.id}
+            />
+          );
+        })}
       </div>
-
-      {filteredData.length !== 0 && (
-        <div className={styles.search_result}>
-          {filteredData.slice().sort(setOrderModel).map((value) => {
-            return (
-              <PiecesCard
-                id={value.id}
-                nome={capitalizeFirstLetter(value.nome)}
-                fabricante={capitalizeFirstLetter(value.fabricante)}
-                marca={value.marca.nome}
-                modelo={capitalizeFirstLetter(value.modelo)}
-                cilindrada={value.cilindrada}
-                de={value.anoInicial}
-                ate={value.anoFinal}
-                quantidade={value.quantidade}
-                preco={value.preco}
-                key={value.id}
-              />
-            );
-          })}
-        </div>
-      )
-      }
-      {pieces.length === 0 && (
-        <p>Não há peças cadastradas!</p>
-      )}
-    </Container>
+    )
+  }
+  {
+    pieces.length === 0 && (
+      <p>Não há peças cadastradas!</p>
+    )
+  }
+    </Container >
   )
 }
 

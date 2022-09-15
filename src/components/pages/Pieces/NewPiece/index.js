@@ -13,72 +13,72 @@ function NewPiece() {
     const [message, setMessage] = useState()
     const [type, setType] = useState()
 
-    function createPost(peca) {
+    function createPost(a) {
 
-        if (!peca.nome) {
+        if (!a.nome) {
             setMessage('Nome da peça não definido')
             setType('error')
 
             setTimeout(() => { setMessage('') }, 2500);
             return false
         }
-        else if (!peca.fabricante) {
+        else if (!a.fabricante) {
             setMessage('Fabricante da peça não definido')
             setType('error')
 
             setTimeout(() => { setMessage('') }, 2500);
             return false
         }
-        else if (!peca.marca) {
+        else if (!a.marca) {
             setMessage('Marca da peça não definida')
             setType('error')
 
             setTimeout(() => { setMessage('') }, 2500);
             return false
         }
-        else if (!peca.modelo) {
+        else if (!a.modelo) {
             setMessage('Modelo da moto não definido')
             setType('error')
 
             setTimeout(() => { setMessage('') }, 2500);
             return false
         }
-        else if (!peca.cilindrada) {
+        else if (!a.cilindrada) {
             setMessage('Cilindrada da moto não definida')
             setType('error')
 
             setTimeout(() => { setMessage('') }, 2500);
             return false
         }
-        else if (!peca.anoInicial) {
+        else if (!a.anoInicial) {
             setMessage('Ano Inicial inválido')
             setType('error')
 
             setTimeout(() => { setMessage('') }, 2500);
             return false
         }
-        else if (!peca.anoFinal || parseFloat(peca.anoFinal) < parseFloat(peca.anoInicial)) {
+        else if (!a.anoFinal || parseFloat(a.anoFinal) < parseFloat(a.anoInicial)) {
             setMessage('Ano Final inválido')
             setType('error')
 
             setTimeout(() => { setMessage('') }, 2500);
             return false
         }
-        else if (!peca.quantidade || parseFloat(peca.quantidade) < 1) {
+        else if (!a.quantidade || parseFloat(a.quantidade) < 1) {
             setMessage('Quantidade de peças inválida')
             setType('error')
 
             setTimeout(() => { setMessage('') }, 2500);
             return false
         }
-        else if (!peca.custo || parseFloat(peca.custo) < 1) {
+        else if (!a.custo || parseFloat(a.custo) < 1) {
             setMessage('Custo da peça inválido')
             setType('error')
 
             setTimeout(() => { setMessage('') }, 2500);
             return false
         }
-        else if (!peca.preco || parseFloat(peca.preco) < parseFloat(peca.custo)) {
+        else if (!a.preco || parseFloat(a.preco) < parseFloat(a.custo)) {
             setMessage('Preço de venda inválido')
             setType('error')
 
@@ -91,7 +91,7 @@ function NewPiece() {
             headers: {
                 'Content-type': 'application/json',
             },
-            body: JSON.stringify(peca)
+            body: JSON.stringify(a)
         })
             .then(resp => resp.json())
             .then((data) => {

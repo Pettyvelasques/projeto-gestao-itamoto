@@ -1,5 +1,6 @@
 .container {
-    width: 1200px;
+    width: 100%;
+    padding: 0 1em;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
@@ -11,6 +12,7 @@
 }
 
 .start {
+    padding: 0 2em;
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 1em;

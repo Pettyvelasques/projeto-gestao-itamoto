@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom"
 import { useState, useEffect } from "react";
 
 import styles from './index.module.css'
-import ClientsCard from "../ClientsCard";
+import SearchCard from "../../../form/SearchCard";
 import Container from "../../../layout/Container";
 import LinkButton from "../../../layout/LinkButton";
 import Message from "../../../layout/Message";
@@ -38,11 +38,18 @@ function Clientes() {
       }, 300)
   }, [])
 
-  const handleOnChange = (e) => {
-    const searchWord = e.target.value
+  const handleOnChange = (a) => {
+    const searchWord = a.target.value
     setWordEntered(searchWord)
     const newFilter = clients.filter((value) => {
-      return value.nome.toLowerCase().includes(searchWord.toLowerCase())
+      return (
+        value.nome.toLowerCase().includes(searchWord.toLowerCase())
+        || value.sobrenome.toLowerCase().includes(searchWord.toLowerCase())
+        || value.marca.nome.toLowerCase().includes(searchWord.toLowerCase())
+        || value.modelo.toLowerCase().includes(searchWord.toLowerCase())
+        || value.cilindrada.toLowerCase().includes(searchWord.toLowerCase())
+        || value.ano.toLowerCase().includes(searchWord.toLowerCase())
+      )
     })
 
     if (searchWord === "") {
@@ -59,8 +66,8 @@ function Clientes() {
     return a === b ? 0 : a > b ? 1 : -1;
   }
 
-  function capitalizeFirstLetter(a) {
-    return a.charAt(0).toUpperCase() + a.slice(1);
+  function capitalizeFirstLetter(b) {
+    return b.charAt(0).toUpperCase() + b.slice(1).toLowerCase();
   }
 
   return (
@@ -89,14 +96,15 @@ function Clientes() {
         <div className={styles.search_result}>
           {filteredData.slice().sort(setOrderName).map((value) => {
             return (
-              <ClientsCard
-                id={value.id}
-                nome={capitalizeFirstLetter(value.nome)}
-                sobrenome={capitalizeFirstLetter(value.sobrenome)}
-                marca={value.marca.nome}
-                modelo={capitalizeFirstLetter(value.modelo)}
-                cilindrada={value.cilindrada}
-                ano={value.ano}
+              <SearchCard
+                id_place="clientes"
+                id_item={value.id}
+                a={value.nome.split(' ').map(capitalizeFirstLetter).join(' ')}
+                b={value.sobrenome.split(' ').map(capitalizeFirstLetter).join(' ')}
+                c={value.marca.nome}
+                d={value.modelo.split(' ').map(capitalizeFirstLetter).join(' ')}
+                e={value.cilindrada}
+                f={value.ano}
                 key={value.id}
               />
             );

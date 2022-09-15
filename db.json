@@ -184,6 +184,46 @@
       "ano": "2011",
       "id": 1,
       "complemento": "A8-24"
+    },
+    {
+      "nome": "teste",
+      "sobrenome": "testando",
+      "ddd": "22",
+      "telefone": "999339944",
+      "endereco": "rua alguma",
+      "numero": "123456",
+      "complemento": "nao tem",
+      "bairro": "qualquer um",
+      "cidade": "sei la",
+      "cep": "012345000",
+      "marca": {
+        "id": "8",
+        "nome": "Haojue"
+      },
+      "modelo": "chopper",
+      "cilindrada": "150",
+      "ano": "2021",
+      "id": 2
+    },
+    {
+      "nome": "TestAnDO",
+      "sobrenome": "teSTe",
+      "ddd": "11",
+      "telefone": "99999999",
+      "endereco": "teste",
+      "numero": "-3",
+      "complemento": "nao tem",
+      "bairro": "rudge ramos",
+      "cidade": "teste",
+      "cep": "0",
+      "marca": {
+        "id": "10",
+        "nome": "Honda"
+      },
+      "modelo": "AfriCa Twin",
+      "cilindrada": "100",
+      "ano": "2022",
+      "id": 3
     }
   ],
   "vendas": [
@@ -215,6 +255,13 @@
       "total": 400,
       "formaPagamento": "Crédito",
       "key": "xyz3"
+    }
+  ],
+  "credenciais": [
+    {
+      "id": 699,
+      "user": "petty",
+      "password": "teste123"
     }
   ]
 }
