@@ -20,35 +20,42 @@ function LoginForm({ handleSubmit }) {
             },
         })
             .then((resp) => resp.json())
-            .then((data) => { setDados(data) })
+            .then((data) => setDados(data))
             .catch((err) => console.log(err))
+
     }, [])
 
     function handleChange(a) {
         setHandleData({ ...handleData, [a.target.name]: a.target.value })
     }
 
-    function validateLogin(a) {
+    function validateLogin(b) {
+        b.preventDefault()
 
-        if (!a.user || a.user !== dados.user) {
+
+        if (!b.user || b.user !== dados.user) {
             setMessage('Usuário não cadastrado')
             setType('error')
-            console.log(a.user)
+            console.log(b.user)
             console.log(dados.user)
+            console.log("user")
 
             setTimeout(() => { setMessage('') }, 2500);
             return false
         }
-        else if (!a.password || a.password !== dados.password) {
+        else if (!b.password || b.password !== dados.password) {
             setMessage('Senha inválida')
             setType('error')
+            console.log("senha")
 
             setTimeout(() => { setMessage('') }, 2500);
             return false
         }
         else {
+            setMessage('Login realizado com sucesso')
+            setType('success')
             handleSubmit(handleData)
-
+            console.log("sucesso")
         }
     }
 
@@ -61,7 +68,7 @@ function LoginForm({ handleSubmit }) {
             <Container customClass="column">
                 <h2>Faça login para continuar</h2>
                 <form onSubmit={validateLogin} className={styles.form}>
-                    <label>
+                    <div>
                         <p>Usuário</p>
                         <Input
                             name="user"
@@ -70,8 +77,8 @@ function LoginForm({ handleSubmit }) {
                             placeholder="Insira o nome de usuário"
                             handleOnChange={handleChange}
                         />
-                    </label>
-                    <label>
+                    </div>
+                    <div>
                         <p>Senha</p>
                         <Input
                             name="password"
@@ -80,7 +87,7 @@ function LoginForm({ handleSubmit }) {
                             placeholder="Insira a senha"
                             handleOnChange={handleChange}
                         />
-                    </label>
+                    </div>
                     <div>
                         <button type="submit">Logar</button>
                     </div>

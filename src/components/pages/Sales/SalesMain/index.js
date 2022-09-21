@@ -4,6 +4,7 @@ import Container from "../../../layout/Container";
 import LinkButton from "../../../layout/LinkButton";
 
 import styles from './index.module.css'
+import Logo from '../../../../img/itamoto_logo.png'
 
 function Sales() {
   const [sales, setSales] = useState({})
@@ -48,10 +49,10 @@ function Sales() {
 
     return a === b ? 0 : a > b ? 1 : -1;
   }
-/* 
-  function capitalizeFirstLetter(a) {
-    return a.charAt(0).toUpperCase() + a.slice(1);
-  } */
+  /* 
+    function capitalizeFirstLetter(a) {
+      return a.charAt(0).toUpperCase() + a.slice(1);
+    } */
 
   return (
     <Container customClass="start">

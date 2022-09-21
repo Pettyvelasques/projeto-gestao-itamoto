@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import styles from './index.module.css'
 import SearchCard from "../../../form/SearchCard";
 import Container from "../../../layout/Container";
-import Button from "../../../layout/Button";
+import LinkButton from "../../../layout/LinkButton";
 import Message from "../../../layout/Message";
 import Login from "../../Login/LoginMain";
 
@@ -69,72 +69,76 @@ function Pieces() {
   function capitalizeFirstLetter(b) {
     return b.charAt(0).toUpperCase() + b.slice(1);
   }
-  
-  var blockModal = document.getElementsByClassName("modal_container");
 
-  function openModal() {
-    console.log("aparecendo modal")
-    blockModal.style.display = "block";
-  }
+  var userLoginValue = sessionStorage.getItem("userLogin");
 
   function closeModal() {
-    blockModal.style.display = "none";
+    userLoginValue = true
+    sessionStorage.setItem("userLogin", userLoginValue);
   }
 
   return (
-    <Container customClass="start">
-      <div className={styles.modal_container} /* style={{display: blockModal ? 'flex' : 'none'}} */>
-        <Login closeModal={closeModal}/>
-      </div>
-      <div className={styles.search_container}>
-        <input type="search"
-          placeholder="Digite para pesquisar"
-          onChange={handleOnChange}
-          value={wordEntered}
-        />
-        <Button onClick={openModal} text="+" />
-      </div>
-      { message && <Message type={type} msg={message} /> }
-
-  <div className={styles.index_result}>
-    <p> Nome </p>
-    <p> Fabricante </p>
-    <p> Marca </p>
-    <p> Modelo </p>
-    <p> Cilindrada </p>
-    <p> Ano Inicial </p>
-    <p> Ano Final </p>
-    <p>  </p>
-  </div>
-
-  {
-    filteredData.length !== 0 && (
-      <div className={styles.search_result}>
-        {filteredData.slice().sort(setOrderModel).map((value) => {
-          return (
-            <SearchCard
-              id_place="pecas"
-              id_item={value.id}
-              a={value.nome.split(' ').map(capitalizeFirstLetter).join(' ')}
-              b={value.fabricante.split(' ').map(capitalizeFirstLetter).join(' ')}
-              c={value.marca.nome}
-              d={value.modelo.split(' ').map(capitalizeFirstLetter).join(' ')}
-              e={value.cilindrada}
-              f={value.anoInicial}
-              g={value.anoFinal}
-              key={value.id}
+    <>
+      {userLoginValue ? (
+        <Container customClass="start" >
+          <div className={styles.modal_container}>
+            <Login closeModal={closeModal} />
+          </div>
+        </Container>
+      ) : (
+        <Container customClass="start">
+          <div className={styles.search_container}>
+            <input type="search"
+              placeholder="Digite para pesquisar"
+              onChange={handleOnChange}
+              value={wordEntered}
             />
-          );
-        })}
-      </div>
-    )
-  }
-  {
-    pieces.length === 0 && (
-      <p>Não há peças cadastradas!</p>
-    )
-  }
-    </Container >
+            <LinkButton to="/newclient" text="+" />
+          </div>
+          {message && <Message type={type} msg={message} />}
+
+          <div className={styles.index_result}>
+            <p> Nome </p>
+            <p> Fabricante </p>
+            <p> Marca </p>
+            <p> Modelo </p>
+            <p> Cilindrada </p>
+            <p> Ano Inicial </p>
+            <p> Ano Final </p>
+            <p>  </p>
+          </div>
+
+          {
+            filteredData.length !== 0 && (
+              <div className={styles.search_result}>
+                {filteredData.slice().sort(setOrderModel).map((value) => {
+                  return (
+                    <SearchCard
+                      id_place="pecas"
+                      id_item={value.id}
+                      a={value.nome.split(' ').map(capitalizeFirstLetter).join(' ')}
+                      b={value.fabricante.split(' ').map(capitalizeFirstLetter).join(' ')}
+                      c={value.marca.nome}
+                      d={value.modelo.split(' ').map(capitalizeFirstLetter).join(' ')}
+                      e={value.cilindrada}
+                      f={value.anoInicial}
+                      g={value.anoFinal}
+                      key={value.id}
+                    />
+                  );
+                })}
+              </div>
+            )
+          }
+          {
+            pieces.length === 0 && (
+              <p>Não há peças cadastradas!</p>
+            )
+          }
+        </Container >
+      )
+      }
+    </>
   )
 }
 
